@@ -49,13 +49,6 @@ Build a simple and maintainable message-processing API that follows backend deve
 
 ## Functional Requirements
 
-### API Endpoints
-**http://127.0.0.1:5000/apidocs/**
-
-<p align="center">
-  <img width="800" height="800" src="https://github.com/SilvanaJ90/Images/blob/main/ApiNequiBot/api.png">
-</p>
-
 **POST /api/messages**
 
 - Accepts messages in JSON format
@@ -81,50 +74,50 @@ Build a simple and maintainable message-processing API that follows backend deve
 
 ---
 
-### Example Requests
+### API Endpoints
+**http://127.0.0.1:5000/apidocs/**
 
-**Example Request Payload**
+<p align="center">
+  <img width="800" height="800" src="https://github.com/SilvanaJ90/Images/blob/main/ApiNequiBot/api.png">
+</p>
 
-```json
-{
-  "message_id": "msg-123456",
-  "session_id": "session-abcdef",
-  "content": "Hello, how can I help you today?",
-  "timestamp": "2023-06-15T14:30:00Z",
-  "sender": "system"
-}
-```
-**Example Success Response**
+**POST /api/messages**
 
-```{
-  "status": "success",
-  "data": {
-    "message_id": "msg-123456",
-    "session_id": "session-abcdef",
-    "content": "Hello, how can I help you today?",
-    "timestamp": "2023-06-15T14:30:00Z",
-    "sender": "system",
-    "metadata": {
-      "word_count": 6,
-      "character_count": 32,
-      "processed_at": "2023-06-15T14:30:01Z"
-    }
-  }
-}
-```
+Creates a new chat message in the system
 
-**Example Error Response**
+**Request Payload**
+
+<p align="center">
+  <img width="800" height="800" src="https://github.com/SilvanaJ90/Images/blob/main/ApiNequiBot/payload.png">
+</p>
+
+**Success Response**
+<p align="center">
+  <img width="800" height="800" src="https://github.com/SilvanaJ90/Images/blob/main/ApiNequiBot/response%20post.png">
+</p>
+
+**Error Response**
+
+**GET /api/messages**
+Retrieves all messages for a given session.
+
+<p align="center">
+  <img width="800" height="800" src="https://github.com/SilvanaJ90/Images/blob/main/ApiNequiBot/error-post.png">
+</p>
+
+**Error Response**
+<p align="center">
+  <img width="800" height="800" src="https://github.com/SilvanaJ90/Images/blob/main/ApiNequiBot/get.png">
+</p>
 
 
-```{
-  "status": "error",
-  "error": {
-    "code": "INVALID_FORMAT",
-    "message": "Invalid message format",
-    "details": "The 'sender' field must be either 'user' or 'system'."
-  }
-}
-```
+**Success Response**
+<p align="center">
+  <img width="800" height="800" src="https://github.com/SilvanaJ90/Images/blob/main/ApiNequiBot/response-get.png">
+</p>
+
+
+
 
 ---
 ## Error Handling
