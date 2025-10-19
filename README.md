@@ -180,7 +180,6 @@ All errors return a JSON response with status: error and detailed information.
 | Activate on macOS/Linux      | `source .venv/bin/activate` | Activate environment on macOS/Linux |
 | Install dependencies         | `pip install -r requirements.txt` | Install all required packages |
 | Run development server (Flask Api) | `python run.py` | Start the API locally |
-| Run tests                    | `export PYTHONPATH=.` <br> `pytest -v tests/test_messages.py` | Export PYTHONPATH and run tests with verbose output |
 
 ## Run Tests
 This project includes unit and integration tests using Pytest to ensure the API works as expected. Tests cover message posting, validation, error handling, and message retrieval.
