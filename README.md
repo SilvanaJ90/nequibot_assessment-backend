@@ -53,7 +53,7 @@ Build a simple and maintainable message-processing API that follows backend deve
 **http://127.0.0.1:5000/apidocs/**
 
 <p align="center">
-  <img width="600" height="600" src="https://github.com/SilvanaJ90/Images/blob/main/ApiNequiBot/api.png">
+  <img width="800" height="800" src="https://github.com/SilvanaJ90/Images/blob/main/ApiNequiBot/api.png">
 </p>
 
 **POST /api/messages**
