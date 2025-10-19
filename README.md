@@ -241,7 +241,7 @@ pytest -v tests/
 ```
 
 3 **Expected Output:**
-- All tests should pass, showing output similar to:
+
 ```
 collected 20 items
 
@@ -270,8 +270,8 @@ tests/test_sessions.py::test_session_creation PASSED                            
 
 ```
 
-4 **Optional: Coverage Repor**
-- If you want to check coverage (requires pytest-cov), run:
+4 **Coverage Repor**
+
 ```
   pytest --cov=app tests/
 ```
