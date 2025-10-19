@@ -17,6 +17,7 @@ from app.api.schemas import MessageIn
 from app.api.services.message_service import MessageService
 from app.models import storage
 from app.models.session import Session
+from app.models.sender import SenderType
 
 bp = Blueprint("messages", __name__)
 
@@ -45,7 +46,7 @@ def safe_swag_from(path):
 
 
 @safe_swag_from(os.path.join(DOC_MESSAGES_DIR, "post_messages.yaml"))
-@bp.route("", methods=["POST"], strict_slashes=False)
+@bp.route("", methods=["POST"])
 def post_message():
     """
     POST /api/messages
@@ -76,6 +77,24 @@ def post_message():
         return jsonify(
             {"status": "error", "error": {
                 "code": "INVALID_REQUEST", "message": str(e)}}), 400
+
+    # ------------------ DEBUG INFO (temporal) ------------------
+    try:
+        # Raw payload received
+        current_app.logger.debug("POST /api/messages payload: %s", payload)
+        # Pydantic-normalized fields
+        current_app.logger.debug("validated.sender_type: %s", getattr(validated, "sender_type", None))
+        current_app.logger.debug("validated.session_id: %s", getattr(validated, "session_id", None))
+        # What sessions storage currently has (in THIS process)
+        sess_ids = [getattr(s, "session_id", None) for s in storage.all(Session).values()]
+        current_app.logger.debug("Sessions in storage at POST time: %s", sess_ids)
+    except Exception:
+        current_app.logger.exception("Debug logging failed")
+    # -----------------------------------------------------------
+
+
+    if validated.sender_type:
+        validated.sender_type = validated.sender_type.lower()
 
     create_payload = {
         "sender_id": validated.sender_id,

@@ -21,6 +21,7 @@ from app.config import Config
 from app.models import storage
 from app.api.errors import register_error_handlers
 from flasgger import Swagger
+from app.models.storage import init_db, preload_test_data
 
 
 def create_app():
@@ -42,8 +43,11 @@ def create_app():
     app.config.from_object(Config)
 
     # Initialize the database (create tables if they don’t exist)
-    from app.models.storage import init_db
+
     init_db()
+
+    # Pre-cargar sender, session y mensaje
+    preload_test_data()
 
     # Register all API blueprints
     register_blueprints(app)

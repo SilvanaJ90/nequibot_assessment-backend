@@ -76,12 +76,19 @@ class MessageService:
 
         # Create or validate chat session
         if not session_id:
+            # No session_id provided -> create a new Session linked to the sender
             session = Session(user_id=sender_id)
             storage.new(session)
             session_id = session.session_id
         else:
-            session = storage.get(Session, session_id)
+            # session_id provided -> search by the public session_id field
+            session = None
+            for s in storage.all(Session).values():
+                if getattr(s, "session_id", None) == session_id:
+                    session = s
+                    break
             if not session:
+                # session_id fue proporcionado pero no existe
                 raise ValueError("Session not found")
 
         # Moderation check
@@ -93,7 +100,7 @@ class MessageService:
             session_id=session_id,
             sender_id=sender_id,
             content=content
-            )
+        )
         metadata = simple_process(content)
         msg.set_metadata(metadata)
 

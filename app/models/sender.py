@@ -57,7 +57,10 @@ class Sender(BaseModel, Base):
     first_name = Column(String(128), nullable=True)
     last_name = Column(String(128), nullable=True)
     is_active = Column(Boolean, default=True, nullable=False)
-    type = Column(Enum(SenderType), default=SenderType.USER, nullable=False)
+    type = Column(Enum(SenderType, values_callable=lambda obj: [e.value for e in obj]), 
+    default=SenderType.USER, 
+    nullable=False
+)
 
     @property
     def password(self):
