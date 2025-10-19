@@ -98,14 +98,14 @@ Creates a new chat message in the system
 
 **Error Response**
 
-**GET /api/messages**
-Retrieves all messages for a given session.
+
 
 <p align="center">
   <img width="800" height="800" src="https://github.com/SilvanaJ90/Images/blob/main/ApiNequiBot/error-post.png">
 </p>
 
-**Error Response**
+**GET /api/messages**
+Retrieves all messages for a given session.
 <p align="center">
   <img width="800" height="800" src="https://github.com/SilvanaJ90/Images/blob/main/ApiNequiBot/get.png">
 </p>
