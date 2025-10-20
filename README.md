@@ -165,7 +165,7 @@ All errors return a JSON response with status: error and detailed information.
 
 | Step                         | Command | Description |
 |------------------------------|---------|-------------|
-| Clone the project            | `git clone https://github.com/your-username/backend-developer-assessment-python.git` | Clone the repository |
+| Clone the project            | `git clone https://github.com/SilvanaJ90/nequibot_assessment-backend.git` | Clone the repository |
 | Move to project folder       | `cd backend-developer-assessment-python` | Navigate into project directory |
 | Create virtual environment   | `python -m venv .venv` | Create isolated Python environment |
 | Activate on Windows          | `.\.venv\Scripts\Activate.ps1` | Activate environment on Windows |
